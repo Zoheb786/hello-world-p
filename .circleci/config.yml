@@ -5,13 +5,13 @@ jobs:
       - image: cimg/ruby:3.0.2
         auth:
           username: mydockerhub-user
-          password: $DOCKER_PASSWORD
+          password: $DOCKERHUB_PASSWORD
       
     steps:
       - checkout
       - run: echo "A first hello" 
       - run: mkdir -p my_workspace
-      - run: echo "Trying out workspac" > my_workspace/echo-output
+      - run: echo "Trying out workspaces" > my_workspace/echo-output
       - persist_to_workspace:
           root: my_workspace
           paths:
@@ -22,14 +22,14 @@ jobs:
       - image: cimg/ruby:3.0.2
         auth:
           username: mydockerhub-user
-          password: $DOCKER_PASSWORD
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run: echo "A more familiar hi" 
       - attach_workspace:
           at: my_workspace
       - run: |
-          if [[ $(cat my_workspace/echo-output)=="Trying out workspace"]]; then
+          if [[ $(cat my_workspace/echo-output) == "Trying out workspaceS" ]]; then
             echo " It worked!";
           else
             echo "Nope!"; exit 1
