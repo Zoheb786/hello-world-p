@@ -7,21 +7,21 @@ jobs:
           username: mydockerhub-user
           password: $DOCKER_PASSWORD
       
-      steps:
-        - checkout
-        - run: echo "A first hello" 
-        - run: sleep 25
+    steps:
+      - checkout
+      - run: echo "A first hello" 
+      - run: sleep 25
      
     two:
-       docker:
-         - image: cimg/ruby:3.0.2
-           auth:
-             username: mydockerhub-user
-             password: $DOCKER_PASSWORD
-       steps:
-         - checkout
-         - run: echo "A more familiar hi" 
-         - run: sleep 15
+      docker:
+        - image: cimg/ruby:3.0.2
+          auth:
+            username: mydockerhub-user
+            password: $DOCKER_PASSWORD
+      steps:
+        - checkout
+        - run: echo "A more familiar hi" 
+        - run: sleep 15
        
   workflows:
     version: 2
@@ -31,4 +31,3 @@ jobs:
         -two
         
       
-
