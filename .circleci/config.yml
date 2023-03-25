@@ -1,4 +1,4 @@
-version2
+version: 2
 jobs: 
   one:
     docker:
@@ -9,20 +9,19 @@ jobs:
       
       steps:
         -checkout
-       - run: echo "A first hello" 
-       -run: sleep 25
+        - run: echo "A first hello" 
+        -run: sleep 25
      
-     two:
+    two:
        docker:
-      - image: cimg/ruby:3.0.2
-        auth:
-          username: mydockerhub-user
-          password: $DOCKER_PASSWORD
-      
-      steps:
-        -checkout
-       - run: echo "A more familiar hi" 
-       -run: sleep 15
+         - image: cimg/ruby:3.0.2
+           auth:
+             username: mydockerhub-user
+             password: $DOCKER_PASSWORD
+       steps:
+         -checkout
+         - run: echo "A more familiar hi" 
+         -run: sleep 15
        
   workflows:
     version: 2
